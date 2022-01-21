@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <style>
+        i {
+            font-size: 50px;
+        }
+        .golden {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <i id="first" class="fas fa-star"></i>
+    <i id="second" class="fas fa-star"></i>
+    <i id="third" class="fas fa-star"></i>
+    <i id="fourth" class="fas fa-star"></i>
+    <i id="fifth" class="fas fa-star"></i>
+
+    <!-- Задание. Используя заготовку, сделайте чтобы при наведении на вторую звезду
+    подсвечивались первая и вторая звезды. При наведени на третью звезду подсвечивались
+    первая, вторая и третья звезды, и т.д. 
+    mouseover - это событие срабатывает когда мы наводим на элемент.
+    mouseout - это событие срабатывает когда мы перестаем наводить на элемент.
+	Вы можете пойти более продвинутым путем, и получать предыдущий элемент 
+	например с помощью https://mzl.la/3a4SPlR
+    -->
+
+    <script>
+        const goldenClass = 'golden';
+
+        /**/
+
+        // TODO: Метод 1 (показался оптимальным...)
+        let starNames = [
+          firstStar = document.getElementById('first'),
+          secondStar = document.getElementById('second'),
+          thirdStar = document.getElementById('third'),
+          fourthStar = document.getElementById('fourth'),
+          fifthStar = document.getElementById('fifth'),
+        ];
+
+        console.log(starNames)
+
+        for (let i = 0; i < starNames.length; i++) {
+          starNames[i].addEventListener('mouseover', function() {
+            if (!starNames[i].classList.contains(goldenClass)) {
+              for (let j = 0; j < i + 1; j++) {
+                starNames[j].classList.add(goldenClass);
+                console.log('j: ' + j);
+              }
+            }
+            console.log('i: ' + i);
+          });
+
+          starNames[i].addEventListener('mouseout', function() {
+            for (let j = 0; j < i + 1; j++) {
+              starNames[j].classList.remove(goldenClass);
+            }
+          });
+        }
+
+
+        /**/
+
+
+        // TODO: Метод 2 (показался избыточным...)
+        /*
+        let firstStar = document.getElementById('first');
+        let secondStar = document.getElementById('second');
+        let thirdStar = document.getElementById('third');
+        let fourthStar = document.getElementById('fourth');
+        let fifthStar = document.getElementById('fifth');
+        */
+
+        /**/
+
+        // выносим по ф-циям что бы сократить код
+        function fillStar(target) {
+          if (!target.classList.contains(goldenClass)) {
+            target.classList.add(goldenClass);
+          }
+        }
+
+        function emptyStar(target) {
+          target.classList.remove(goldenClass);
+        }
+
+        /**/
+
+        /*
+        firstStar.addEventListener('mouseover', function() {
+          fillStar(firstStar);
+        });
+
+        firstStar.addEventListener('mouseout', function() {
+          emptyStar(firstStar);
+        });
+
+
+        secondStar.addEventListener('mouseover', function() {
+          fillStar(firstStar);
+          fillStar(secondStar);
+        });
+
+        secondStar.addEventListener('mouseout', function() {
+          emptyStar(firstStar);
+          emptyStar(secondStar);
+        });
+
+
+        thirdStar.addEventListener('mouseover', function() {
+          fillStar(firstStar);
+          fillStar(secondStar);
+          fillStar(thirdStar);
+        });
+
+        thirdStar.addEventListener('mouseout', function() {
+          emptyStar(firstStar);
+          emptyStar(secondStar);
+          emptyStar(thirdStar);
+        });
+         */
+        // итд ...
+    </script>
+</body>
+</html>
