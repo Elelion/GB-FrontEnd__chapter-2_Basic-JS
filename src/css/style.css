@@ -1,0 +1,22 @@
+.player {
+  width: 600px;
+}
+
+video {
+  width: 100%;
+}
+
+.timing {
+  width: 100%;
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
+  border: 1px solid red;
+  text-align: center;
+}
+
+.section {
+  background: #d0cbd0;
+}
