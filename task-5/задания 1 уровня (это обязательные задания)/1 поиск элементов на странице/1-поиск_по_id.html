@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#">link1</a>
+    <a href="#">link2</a>
+    <a href="#">link3</a>
+    <a href="#" id="four">link4</a>
+
+    <!-- Задание. Используя поиск по id, получите ссылку с текстом link4
+    и выведите ее в консоль. -->
+
+    <script>
+        let linkId = document.getElementById('four');
+        let linkSelector = document.querySelector('#four');
+        let linkTag = document.getElementsByTagName('a');
+
+        console.log(linkId.innerHTML);
+        console.log(linkSelector.innerHTML);
+        console.log(linkTag[3].innerHTML);
+    </script>
+</body>
+</html>
